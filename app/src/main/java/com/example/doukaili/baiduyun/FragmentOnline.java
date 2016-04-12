@@ -1,8 +1,11 @@
 package com.example.doukaili.baiduyun;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,34 +28,46 @@ public class FragmentOnline extends Fragment {
     private void setupRecycleView(RecyclerView recyclerView) {
         String[] mDataSet = {"nihao","wobuhao","henbuhao",};
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new MyAdapter(mDataSet));
+        recyclerView.setAdapter(new MyAdapter(mDataSet,getActivity()));
     }
 
     public static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private String[] mDataSet ;
+        private Context mContext;
         public static class ViewHolder extends RecyclerView.ViewHolder {
 
             public View view;
-            public TextView mTextView;
+            public TextView mName;
+            public TextView mTitle;
+            public CardView mCardView;
             public ViewHolder(View v) {
                 super(v);
-                mTextView = (TextView)v.findViewById(R.id.list_textview);
+                mName = (TextView)v.findViewById(R.id.shot_name);
+                mCardView = (CardView)v.findViewById(R.id.card_view);
             }
         }
 
-        public MyAdapter(String[] myDataset) {
+        public MyAdapter(String[] myDataset,Context context) {
             mDataSet = myDataset;
+            mContext = context;
         }
 
         public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).
-                    inflate(R.layout.list_item, parent, false);
+                    inflate(R.layout.item_card_view, parent, false);
             ViewHolder vh = new ViewHolder(v);
             return vh;
         }
 
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mTextView.setText(mDataSet[position]);
+            holder.mName.setText(mDataSet[position]);
+            holder.mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext,ShotDetailActivity.class);
+                    mContext.startActivity(intent);
+                }
+            });
         }
         public int getItemCount() {
             return mDataSet.length;
