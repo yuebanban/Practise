@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="8dp">
+    android:layout_height="60dp"
+    android:paddingRight="8dp">
     <ImageView
+        android:layout_margin="8dp"
         android:id="@+id/comment_avator"
-        android:layout_width="60"
-        android:layout_height="match_parent"
-        android:scaleType="center"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/avatar"/>
     <TextView
         android:layout_toRightOf="@id/comment_avator"
         android:id="@+id/comment_name"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="24sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:layout_toRightOf="@id/comment_avator"
         android:layout_below="@id/comment_name"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
         android:id="@+id/comment_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cool！"
-        android:textSize="20sp"/>
+        android:textSize="12sp"/>
     <ImageView
         android:id="@+id/comment_love"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/love"/>
     <TextView
         android:layout_marginTop="5dp"
@@ -38,6 +42,6 @@
         android:layout_below="@id/comment_content"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#B6B6B6"/>
+        android:background="#F5F5F5"/>
 
 </RelativeLayout>

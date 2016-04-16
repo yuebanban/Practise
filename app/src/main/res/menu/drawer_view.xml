@@ -3,21 +3,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/sex"
-            android:title="message"
+            android:title="Home"
             android:icon="@drawable/ic_forum"/>
         <item
             android:icon="@drawable/ic_dashboard"
-            android:title="home"
+            android:title="Buckets"
             android:id="@+id/home"/>
     </group>
     <item android:title="subItem">
         <menu>
             <item
-                android:title="message"
+                android:title="Me"
                 android:icon="@drawable/ic_forum"/>
             <item
                 android:icon="@drawable/ic_dashboard"
-                android:title="home"/>
+                android:title="Others"/>
         </menu>
     </item>
 </menu>

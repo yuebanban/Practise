@@ -1,4 +1,4 @@
-package com.example.doukaili.baiduyun;
+package com.example.doukaili.baiduyun.Fragment;
 
 
 import android.content.Context;
@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.doukaili.baiduyun.Activity.ShotDetailActivity;
+import com.example.doukaili.baiduyun.R;
 
 /**
  * Created by Dou.Kaili on 3/30/2016.
@@ -28,10 +31,10 @@ public class FragmentOnline extends Fragment {
     private void setupRecycleView(RecyclerView recyclerView) {
         String[] mDataSet = {"nihao","wobuhao","henbuhao",};
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new MyAdapter(mDataSet,getActivity()));
+        recyclerView.setAdapter(new MyCardAdapter(mDataSet,getActivity()));
     }
 
-    public static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+    public static class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder> {
         private String[] mDataSet ;
         private Context mContext;
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,12 +50,12 @@ public class FragmentOnline extends Fragment {
             }
         }
 
-        public MyAdapter(String[] myDataset,Context context) {
+        public MyCardAdapter(String[] myDataset,Context context) {
             mDataSet = myDataset;
             mContext = context;
         }
 
-        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MyCardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).
                     inflate(R.layout.item_card_view, parent, false);
             ViewHolder vh = new ViewHolder(v);

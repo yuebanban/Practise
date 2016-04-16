@@ -1,4 +1,4 @@
-package com.example.doukaili.baiduyun;
+package com.example.doukaili.baiduyun.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.doukaili.baiduyun.Fragment.FragmentAnimation;
+import com.example.doukaili.baiduyun.Fragment.FragmentLatest;
+import com.example.doukaili.baiduyun.Fragment.FragmentOnline;
+import com.example.doukaili.baiduyun.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentOnline(),"Online");
+        adapter.addFragment(new FragmentLatest(),"Latest");
+        adapter.addFragment(new FragmentAnimation(),"Animation");
         viewPager.setAdapter(adapter);
     }
 
