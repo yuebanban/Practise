@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.doukaili.baiduyun.Data.DribbbleInfo;
+import com.example.doukaili.baiduyun.Data.UserInfo;
 import com.example.doukaili.baiduyun.R;
 
 import org.json.JSONObject;
@@ -38,7 +39,7 @@ public class LoginInActivity extends AppCompatActivity {
     private MyGetThread mGetThread;
 
     private String accessToken;
-    private String userInfo;
+    private JSONObject userInfo;
     private String returnCodeWneView;
     private final JSONObject requestJson = new JSONObject();
 
@@ -128,7 +129,7 @@ public class LoginInActivity extends AppCompatActivity {
         }
         return null;
     }
-    public static String sendGet(String url) {
+    public static JSONObject sendGet(String url) {
         HttpURLConnection conn = null;
         try {
             URL reaUrl = new URL(url);
@@ -141,7 +142,8 @@ public class LoginInActivity extends AppCompatActivity {
             if(requestCode == 200) {
                 InputStream in = conn.getInputStream();
                 String response = getStringFromInputStream(in);
-                return response;
+                JSONObject object = new JSONObject(response);
+                return object;
             }else  {
                 throw new NetworkErrorException("response status is" + requestCode);
             }
@@ -172,6 +174,7 @@ public class LoginInActivity extends AppCompatActivity {
             }
             if(msg.what == 0x111) {
                 mProgressbar.setVisibility(View.INVISIBLE);
+                setUserInfo();
                 Intent intent  = new Intent(LoginInActivity.this,MainActivity.class);
                 startActivity(intent);
             }
@@ -192,5 +195,8 @@ public class LoginInActivity extends AppCompatActivity {
             Log.d("dkl","senGet"+userInfo);
             mHandle.sendEmptyMessage(0x111);
         }
+    }
+    private void setUserInfo() {
+        UserInfo mUserInfo = UserInfo.getUserInfoInstance(userInfo);
     }
 }

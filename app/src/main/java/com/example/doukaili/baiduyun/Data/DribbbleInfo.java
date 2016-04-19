@@ -1,5 +1,7 @@
 package com.example.doukaili.baiduyun.Data;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Dou.Kaili on 2016/4/16.
  */
@@ -21,5 +23,10 @@ public class DribbbleInfo {
             "&scope=" + "public write comment upload" +
             "&state=" + mState;
     public static final String REQUEST_MY_INFO = "https://api.dribbble.com/v1/user";
+
+    public static final String DRIBBBLE_DATA_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(DRIBBBLE_DATA_FORMAT_PATTERN);
+
+    public static final String REQUEST_SHOTS = "https://api.dribbble.com/v1/shots/";
 
 }

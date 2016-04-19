@@ -2,6 +2,7 @@ package com.example.doukaili.baiduyun;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
 
 /**
@@ -10,6 +11,7 @@ import com.facebook.stetho.Stetho;
 public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
+        Fresco.initialize(this);
         //监测网络状况
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
